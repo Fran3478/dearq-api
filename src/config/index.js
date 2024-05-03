@@ -6,7 +6,10 @@ if(env.error) {
 }
 
 export default {
-    port: process.env.API_PORT,
+    api: {
+        port: process.env.API_PORT,
+        prefix: process.env.API_PREFIX
+    },
     db: {
         url: `postgres://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
         pool: {
