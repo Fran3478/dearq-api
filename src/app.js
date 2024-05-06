@@ -4,10 +4,10 @@ import loader from "./loaders/index.js"
 
 const {api} = config
 
-async function startServer() {
+function startServer() {
     const app = express()
 
-    await loader({app})
+    loader({app})
     
     app.listen(api.port, () => {
         console.log(`🟢 Servidor OK - Puerto: ${api.port}`)

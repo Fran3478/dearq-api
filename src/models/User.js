@@ -48,7 +48,6 @@ const User = dbConfig.define("users", {
         },
         afterCreate: (user) => {
             delete user.dataValues.password
-            delete user.dataValues.token
             delete user.dataValues.createdAt
             delete user.dataValues.updatedAt
         }

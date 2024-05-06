@@ -18,6 +18,14 @@ export default {
             acquire: process.env.DB_POOL_ACQUIRE,
             idle: process.env.DB_POOL_IDLE
         }
+    },
+    email: {
+        service: process.env.EMAIL_SERVICE,
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        },
+        verificationUrl: process.env.EMAIL_VERIF_URL
     }
     
 }
