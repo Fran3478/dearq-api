@@ -1,6 +1,6 @@
 import { body } from "express-validator"
 
-const password = body("password")
+export const passwordSingup = body("password")
     .escape()
     .trim()
     .notEmpty()
@@ -11,4 +11,8 @@ const password = body("password")
     })
     .withMessage("La contraseña debe incluir al menos una mayúscula, una minúscula, un número y un símbolo")
 
-export default password
+export const passwordSingin = body("password")
+    .escape()
+    .trim()
+    .notEmpty()
+    .withMessage("Debe indicar la contraseña para inciar sesión")

@@ -1,5 +1,5 @@
 import generateToken from "./generateToken.js";
 
-export default {
+export {
     generateToken
 }

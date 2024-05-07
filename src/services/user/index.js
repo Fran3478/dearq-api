@@ -1,7 +1,13 @@
 import checkExist from "./checkExist.js"
 import create from "./create.js"
+import getType from "./getType.js"
+import getUser from "./getUser.js"
+import getUsername from "./getUsername.js"
 
-export default {
+export {
     checkExist,
-    create
+    create,
+    getType,
+    getUser,
+    getUsername
 }

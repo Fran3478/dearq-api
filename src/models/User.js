@@ -17,7 +17,8 @@ const User = dbConfig.define("users", {
         type: DataTypes.STRING
     },
     username: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        allowNull: false
     },
     token: {
         type: DataTypes.UUID
@@ -61,7 +62,7 @@ const User = dbConfig.define("users", {
     }
 })
 
-User.prototype.checkPass = (password) => {
+User.prototype.checkPass = function(password) {
     return bcrypt.compareSync(password, this.password)
 }
 

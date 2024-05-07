@@ -1,8 +1,8 @@
 import { body } from "express-validator"
-import user from "../../user/index.js"
+import {checkExist} from "../../services/user/index.js"
 
 const inUse = (email) => {
-    return user.checkExist({value: email, att: "email"}) 
+    return checkExist({value: email, att: "email"}) 
 }
 
 const email = body("email")
