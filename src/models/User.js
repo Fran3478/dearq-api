@@ -14,33 +14,49 @@ const User = dbConfig.define("users", {
         allowNull: false
     },
     password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    nick: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    token: {
         type: DataTypes.STRING
     },
+    username: {
+        type: DataTypes.STRING
+    },
+    token: {
+        type: DataTypes.UUID
+    },
     verified: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     },
     role: {
         type: DataTypes.ENUM({
-            values: ["admin", "client"]
+            values: ["admin", "user", "subscriber"]
         }),
+        defaultValue: "user",
         allowNull: false
     },
     subscribed: {
-        type: DataTypes.BOOLEAN
-    }
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+
 }, {
     hooks: {
         beforeCreate: async function (user) {
-            const salt = await bcrypt.genSalt(10)
-            user.password = await bcrypt.hash(user.password, salt)
+            if(user.role !== "subscriber"){
+                const salt = await bcrypt.genSalt(10)
+                user.password = await bcrypt.hash(user.password, salt)
+            }
+        },
+        afterCreate: (user) => {
+            delete user.dataValues.password
+            delete user.dataValues.createdAt
+            delete user.dataValues.updatedAt
+        }
+    },
+    scopes: {
+        removeSensitive: {
+            attributes: {
+                exclude: ["password", "token", "verified", "createdAt", "updatedAt"]
+            }
         }
     }
 })
