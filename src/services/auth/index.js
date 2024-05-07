@@ -1,5 +1,7 @@
-import singup from "./singup.js";
+import singinService from "./singinService.js";
+import singupService from "./singupService.js";
 
-export default {
-    singup
+export {
+    singupService,
+    singinService
 }

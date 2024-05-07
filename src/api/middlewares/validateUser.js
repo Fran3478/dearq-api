@@ -1,8 +1,14 @@
-import validate from "../../services/auth/validators/index.js"
-const validateUser = [
-    validate.user.username,
-    validate.user.email,
-    validate.user.password
+import email from "./email.js"
+import {passwordSingup, passwordSingin} from "./password.js"
+import {usernameSingup, usernameSingin} from "./username.js"
+
+export const validateSingupUser = [
+    usernameSingup,
+    email,
+    passwordSingup
 ]
 
-export default validateUser
+export const validateSinginUser = [
+    usernameSingin,
+    passwordSingin
+]
