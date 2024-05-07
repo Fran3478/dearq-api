@@ -5,8 +5,8 @@ export default async ({username, password}) => {
     console.log(username, password)
     const type = getType(username)
     const user = await getUser({username, type})
-    if(!user) throw new NotFoundError("user not found")
-    if(!user.checkPass(password)) throw new LoginError("password don't match")
-    if(!user.verified) throw new EmailVerificationError("user not verified")
+    if(!user) throw new NotFoundError("El usuario no existe")
+    if(!user.checkPass(password)) throw new LoginError("Contraseña incorrecta")
+    if(!user.verified) throw new EmailVerificationError("No se valido el correo")
     return user
 }
