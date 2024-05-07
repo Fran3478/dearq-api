@@ -1,6 +1,6 @@
 import { Router } from "express"
-import {validateSingupUser, validateSinginUser} from "../middlewares/validateUser.js"
-import {singin, singup} from "../../controllers/auth/index.js"
+import {validateSingupUser, validateSinginUser} from "../validators/validateUser.js"
+import {singin, singup} from "../controllers/auth/index.js"
 
 const route = Router()
 
