@@ -1,5 +1,5 @@
 import { body } from "express-validator"
-import {checkExist} from "../../services/user/index.js"
+import {checkExist} from "../services/user/index.js"
 
 const inUse = (email) => {
     return checkExist({value: email, att: "email"}) 

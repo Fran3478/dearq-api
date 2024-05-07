@@ -1,6 +1,6 @@
 import {Router} from "express"
-import user from "./routes/userRoutes.js"
-import auth from "./routes/authRoutes.js"
+import user from "./userRoutes.js"
+import auth from "./authRoutes.js"
 
 export default () => {
     const app = Router()

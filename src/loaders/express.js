@@ -1,6 +1,6 @@
 import bodyParser from "body-parser"
 import cors from "cors"
-import routes from "../api/index.js"
+import routes from "../routes/index.js"
 import config from "../config/index.js"
 
 const {api} = config
