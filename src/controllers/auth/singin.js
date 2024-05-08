@@ -1,4 +1,3 @@
-import { LoginError, NotFoundError, EmailVerificationError } from "../../errors/index.js"
 import { singinService } from "../../services/auth/index.js"
 
 

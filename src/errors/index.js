@@ -6,14 +6,6 @@ export class LoginError extends Error {
     }
 }
 
-export class NotFoundError extends Error {
-    constructor (message) {
-        super(message)
-        this.name = "NotFoundError"
-        this.statusCode = 404
-    }
-}
-
 export class EmailVerificationError extends Error {
     constructor (message) {
         super(message)
