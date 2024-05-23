@@ -38,7 +38,13 @@ const User = dbConfig.define("users", {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
-
+    blocked: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    block_reason: {
+        type: DataTypes.STRING
+    }
 }, {
     hooks: {
         beforeCreate: async function (user) {
