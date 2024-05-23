@@ -1,21 +1,17 @@
 import { DataTypes, UUIDV4 } from "sequelize"
 import dbConfig from "../config/db.js"
 
-const Post = dbConfig.define("posts", {
+const PostContent = dbConfig.define("postContent", {
     id: {
         type: DataTypes.UUID,
         defaultValue: UUIDV4,
         primaryKey: true,
         allowNull: false
     },
-    published: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
-    },
-    published_date: {
-        type: DataTypes.DATE
+    content: {
+        type: DataTypes.JSONB,
+        allowNull: false
     }
 })
 
-export default Post
+export default PostContent
