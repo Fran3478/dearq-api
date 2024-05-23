@@ -26,6 +26,9 @@ export default {
             pass: process.env.EMAIL_PASS
         },
         verificationUrl: process.env.EMAIL_VERIF_URL
+    },
+    _jwt: {
+        secret: process.env.SECRET_JWT
     }
     
 }
