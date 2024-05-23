@@ -11,6 +11,13 @@ const Comment = dbConfig.define("comments", {
     comment: {
         type: DataTypes.TEXT,
         allowNull: false
+    },
+    blocked: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    block_reason: {
+        type: DataTypes.STRING
     }
 })
 
