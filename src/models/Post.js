@@ -14,7 +14,8 @@ const Post = dbConfig.define("posts", {
         defaultValue: false
     },
     published_date: {
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        allowNull: true
     }
 })
 

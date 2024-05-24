@@ -11,7 +11,7 @@ export default (req, res, next) => {
             token = authorization.split(" ")[1]
         }
         const decoded = jwt.verify(token, _jwt.secret)
-        req._user = decoded._id
+        req._user = {_id: decoded._id, _role: decoded._role}
         next()
     } catch (error) {
         next(error)

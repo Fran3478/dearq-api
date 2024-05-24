@@ -13,8 +13,11 @@ const dbConfig = new Sequelize(db.url, {
         acquire: Number(db.pool.acquire),
         idle: Number(db.pool.idle)
     },
-    operatorsAliases: 0
-
+    operatorsAliases: 0,
+    timezone: "+00:00",
+    dialectOptions: {
+        useUTC: true
+    }
 })
 
 export default dbConfig
