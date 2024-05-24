@@ -7,6 +7,6 @@ export default async ({username, password}) => {
     const user = await getUser({username, type})
     if(!user || !user?.checkPass(password)) throw new LoginError("Usuario o contraseña incorrectos")
     if(!user.verified) throw new EmailVerificationError("El correo no ha sido validado aún")
-    const token = generateJWT({id: user.id, username: user.name})
+    const token = generateJWT({_id: user.id, _username: user.username})
     return {user: user.username, token}
 }

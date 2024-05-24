@@ -10,7 +10,8 @@ export default (req, res, next) => {
         if(authorization && authorization.toLowerCase().startsWith(("bearer"))) {
             token = authorization.split(" ")[1]
         }
-        jwt.verify(token, _jwt.secret)
+        const decoded = jwt.verify(token, _jwt.secret)
+        req._user = decoded._id
         next()
     } catch (error) {
         next(error)

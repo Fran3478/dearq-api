@@ -1,6 +1,6 @@
 import { body } from "express-validator"
 
-export const passwordSingup = body("password")
+export const passwordSignup = body("password")
     .escape()
     .trim()
     .notEmpty()
@@ -11,7 +11,7 @@ export const passwordSingup = body("password")
     })
     .withMessage("La contraseña debe incluir al menos una mayúscula, una minúscula, un número y un símbolo")
 
-export const passwordSingin = body("password")
+export const passwordSignin = body("password")
     .escape()
     .trim()
     .notEmpty()

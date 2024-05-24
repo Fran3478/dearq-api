@@ -1,11 +1,11 @@
 import { Router } from "express"
-import {validateSingupUser, validateSinginUser} from "../validators/validateUser.js"
-import {singin, singup} from "../controllers/auth/index.js"
+import {validateSignupUser, validateSigninUser} from "../validators/validateUser.js"
+import {signin, signup} from "../controllers/auth/index.js"
 
 const route = Router()
 
 export default (app) => {
     app.use("/auth", route)
-    route.post("/singin", validateSinginUser, singin)
-    route.post("/singup", validateSingupUser, singup)
+    route.post("/signin", validateSigninUser, signin)
+    route.post("/signup", validateSignupUser, signup)
 }
