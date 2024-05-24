@@ -5,7 +5,7 @@ const inUse = (username) => {
     return checkExist({value: username, att: "username"})
 }
 
-export const usernameSingup = body("username")
+export const usernameSignup = body("username")
     .escape()
     .trim()
     .custom(async value => {
@@ -19,7 +19,7 @@ export const usernameSingup = body("username")
         }
     })
 
-export const usernameSingin = body("username")
+export const usernameSignin = body("username")
     .escape()
     .trim()
     .notEmpty()

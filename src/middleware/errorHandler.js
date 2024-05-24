@@ -11,12 +11,17 @@ const ERROR_HANDLERS = {
         res.status(401).json({error: "Token inexistente o invalido"})
     },
 
+    PostError: (res, {message}) => {
+        res.status(500).json({error: message})
+    },
+
     defaultError: res => {
         res.status(500).json({error: "Ha ocurrido un error interno en el servidor"}).end()
     }
 }
 
 export default (err, req, res, next) => {
+    console.log(err)
     const handler = ERROR_HANDLERS[err.name] || ERROR_HANDLERS.defaultError
     handler(res, err)
 }

@@ -1,10 +1,28 @@
 import User from "../models/User.js"
-// import Post from "../models/Post.js"
-// import Comment from "../models/Comment.js"
+import Post from "../models/Post.js"
+import Category from "../models/Category.js"
+import PostView from "../models/PostView.js"
+import PostContent from "../models/PostContent.js"
+import Comment from "../models/Comment.js"
 
+User.hasMany(Post, {foreignKey: "userId"})
+Post.belongsTo(User, {foreignKey: "userId"})
+Post.hasOne(PostView, {foreignKey: "postId"})
+PostView.belongsTo(Post, {foreignKey: "postId"})
+Post.hasOne(PostContent, {foreignKey: "postId"})
+PostContent.belongsTo(Post, {foreignKey: "postId"})
+Post.belongsToMany(Category, {through: "post_category", foreignKey: "postId"})
+Category.belongsToMany(Post, {through: "post_category", foreignKey: "categoryId"})
+Post.hasMany(Comment, {foreignKey: "postId", as: "comments"})
+Comment.belongsTo(Post, {foreignKey: "postId", as: "post"})
+Comment.hasMany(Comment, {foreignKey: "parentId", as: "replies"})
+Comment.belongsTo(Comment, {foreignKey: "parentId", as: "parent"})
 
 export {
     User,
-    // Post,
-    // Comment
+    Post,
+    PostView,
+    PostContent,
+    Category,
+    Comment
 }

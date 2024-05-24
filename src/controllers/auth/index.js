@@ -1,7 +1,7 @@
-import singin from "./singin.js";
-import singup from "./singup.js";
+import signin from "./signin.js";
+import signup from "./signup.js";
 
 export {
-    singin,
-    singup
+    signin,
+    signup
 }

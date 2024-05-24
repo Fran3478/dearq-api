@@ -1,7 +1,7 @@
-import singinService from "./singinService.js";
-import singupService from "./singupService.js";
+import signinService from "./signinService.js";
+import signupService from "./signupService.js";
 
 export {
-    singupService,
-    singinService
+    signupService,
+    signinService
 }
