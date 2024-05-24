@@ -3,6 +3,10 @@ const ERROR_HANDLERS = {
         res.status(401).json({error: message})
     },
 
+    SignupError: (res, {message}) => {
+        res.status(400).json({error: message})
+    },
+
     EmailVerificationError: (res, {message}) => {
         res.status(403).json({error: message})
     },
