@@ -7,7 +7,8 @@ export default async ({id}) => {
         const post = await getPost(id)
         if(post.published) throw new PostUpdateError("El post ya se encuentra publicado")
         await publishPost(post)
-    } catch (error) {
-        
+    } catch (err) {
+        if(err instanceof PostUpdateError) throw new PostUpdateError(err.message, err.orig_error)
+        throw new PostUpdateError("Error al publicar post", err)
     }
 }
