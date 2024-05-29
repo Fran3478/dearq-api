@@ -1,4 +1,5 @@
 import { PostFindError } from "../../errors/index.js"
+import PostView from "../../models/PostView.js"
 import findAll from "../post/findAll.js"
 
 export default async ({page, category = ""}) => {
@@ -10,7 +11,13 @@ export default async ({page, category = ""}) => {
             where: {
                 deleted: false,
                 published: true
-            }
+            },
+            include: [{
+                model: PostView,
+                as: "postView",
+                attributes: { exclude: ['postId', 'createdAt', 'updatedAt'] }
+            }],
+            attributes: { exclude: ['userId', 'deleted', 'deleted_date', 'createdAt', 'updatedAt'] }
         }
  
         if(category) {

@@ -7,8 +7,8 @@ import Comment from "../models/Comment.js"
 
 User.hasMany(Post, {foreignKey: "userId"})
 Post.belongsTo(User, {foreignKey: "userId"})
-Post.hasOne(PostView, {foreignKey: "postId"})
-PostView.belongsTo(Post, {foreignKey: "postId"})
+Post.hasOne(PostView, {foreignKey: "postId", as: "postView"})
+PostView.belongsTo(Post, {foreignKey: "postId", as: "post"})
 Post.hasOne(PostContent, {foreignKey: "postId"})
 PostContent.belongsTo(Post, {foreignKey: "postId"})
 Post.belongsToMany(Category, {through: "post_category", foreignKey: "postId"})
