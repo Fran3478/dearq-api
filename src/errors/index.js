@@ -23,10 +23,11 @@ export class EmailVerificationError extends Error {
 }
 
 export class PostError extends Error {
-    constructor (message, orig_error) {
+    constructor (message, orig_error, status) {
         super(message)
         this.name = "PostError"
         this.orig_error = orig_error
+        this.status = status
     }
 }
 export class PostCreationError extends Error {
@@ -61,10 +62,10 @@ export class PostCheckError extends Error {
     }
 }
 
-export class PostUpdateError extends Error {
+export class PostPublishedError extends Error {
     constructor (message, orig_error) {
         super(message)
-        this.name = "PostUpdateError"
+        this.name = "PostPublishedError"
         this.orig_error = orig_error
     }
 }

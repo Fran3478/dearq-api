@@ -5,7 +5,7 @@ export default async ({id, options = {}}) => {
     try {
         options.where = {...options.where, id}
         const post = await Post.findOne(options)
-        if(!post) throw new PostNotFoundError("El post no existe")
+        if(!post) throw new PostNotFoundError("El post no existe o fue eliminado")
         return post
     } catch (err) {
         if(err instanceof PostNotFoundError) throw new PostNotFoundError(err.message, err)

@@ -1,4 +1,4 @@
-import { PostUpdateError } from "../../errors/index.js"
+import { PostPublishedError } from "../../errors/index.js"
 import Post from "../../models/Post.js"
 
 export default async (post) => {
@@ -9,6 +9,6 @@ export default async (post) => {
         await post.save()
         return
     } catch (err) {
-        throw new PostUpdateError("Error al publicar post", err)
+        throw new PostPublishedError("Error al publicar post", err)
     }
 }

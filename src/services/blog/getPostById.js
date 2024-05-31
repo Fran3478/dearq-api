@@ -25,7 +25,8 @@ export default async (postId) => {
         const post = await getPost({id: postId, options})
         return post
     } catch (err) {
-        if(err instanceof PostFindError || err instanceof PostNotFoundError) throw new PostError(err.message, err.orig_error)
+        if(err instanceof PostNotFoundError) throw new PostNotFoundError(err.message, err.orig_error)
+        if(err instanceof PostFindError) throw new PostError(err.message, err.orig_error)
         throw new PostError(err.message, err)
     }
 }
