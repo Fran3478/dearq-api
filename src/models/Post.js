@@ -1,5 +1,5 @@
 import { DataTypes, UUIDV4 } from "sequelize"
-import dbConfig from "../config/db.js"
+import dbConfig from "./db.js"
 
 const Post = dbConfig.define("posts", {
     id: {

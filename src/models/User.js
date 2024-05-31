@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize"
 import bcrypt from "bcrypt"
-import dbConfig from "../config/db.js"
+import dbConfig from "./db.js"
 
 const User = dbConfig.define("users", {
     id: {

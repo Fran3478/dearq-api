@@ -1,5 +1,5 @@
 import { PostFindError } from "../../errors/index.js"
-import PostView from "../../models/PostView.js"
+import {PostView} from "../../models/index.js"
 import findAll from "../post/findAll.js"
 
 export default async ({page, category = ""}) => {

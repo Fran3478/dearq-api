@@ -1,5 +1,5 @@
 import { PostPublishedError } from "../../errors/index.js"
-import Post from "../../models/Post.js"
+import {Post} from "../../models/index.js"
 
 export default async (post) => {
     try {

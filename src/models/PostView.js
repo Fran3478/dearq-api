@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import dbConfig from "../config/db.js";
+import dbConfig from "./db.js";
 
 const PostView = dbConfig.define("postView", {
     id: {
