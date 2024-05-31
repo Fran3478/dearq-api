@@ -1,4 +1,4 @@
-import dbConfig from "../config/db.js"
+import dbConfig from "./db.js"
 import { DataTypes } from "sequelize"
 
 const Comment = dbConfig.define("comments", {

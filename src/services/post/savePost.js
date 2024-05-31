@@ -1,4 +1,4 @@
-import Post from "../../models/Post.js"
+import {Post} from "../../models/index.js"
 import getUser from "../user/getUser.js"
 import { PostCreationError } from "../../errors/index.js"
 

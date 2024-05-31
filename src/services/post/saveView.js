@@ -1,4 +1,4 @@
-import PostView from "../../models/PostView.js"
+import {PostView} from "../../models/index.js"
 import { PostViewCreationError } from "../../errors/index.js"
 
 export default async ({title, img, img_title}) => {

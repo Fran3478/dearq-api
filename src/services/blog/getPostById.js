@@ -1,6 +1,5 @@
 import { PostError, PostFindError, PostNotFoundError } from "../../errors/index.js"
-import PostContent from "../../models/PostContent.js"
-import PostView from "../../models/PostView.js"
+import {PostView, PostContent} from "../../models/index.js"
 import {getPost} from "../post/index.js"
 
 export default async (postId) => {

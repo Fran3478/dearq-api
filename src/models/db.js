@@ -1,9 +1,9 @@
-import config from "./index.js"
+import config from "../config/index.js"
 import { Sequelize } from "sequelize";
 
 const {db} = config
 
-const dbConfig = new Sequelize(db.url, {
+const sequelize = new Sequelize(db.url, {
     define: {
         timestamps: true
     },
@@ -20,4 +20,4 @@ const dbConfig = new Sequelize(db.url, {
     }
 })
 
-export default dbConfig
+export default sequelize
