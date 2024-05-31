@@ -76,3 +76,19 @@ export class PostFindError extends Error {
         this.orig_error = orig_error
     }
 }
+
+export class PostNotFoundError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "PostNotFoundError"
+        this.orig_error = orig_error
+    }
+}
+
+export class PostDeleteError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "PostDeleteError"
+        this.orig_error = orig_error
+    }
+}

@@ -1,4 +1,4 @@
-import { PostError, PostFindError } from "../../errors/index.js"
+import { PostError, PostFindError, PostNotFoundError } from "../../errors/index.js"
 import PostContent from "../../models/PostContent.js"
 import PostView from "../../models/PostView.js"
 import {getPost} from "../post/index.js"
@@ -25,7 +25,7 @@ export default async (postId) => {
         const post = await getPost({id: postId, options})
         return post
     } catch (err) {
-        if(err instanceof PostFindError) throw new PostError(err.message, err.orig_error)
+        if(err instanceof PostFindError || err instanceof PostNotFoundError) throw new PostError(err.message, err.orig_error)
         throw new PostError(err.message, err)
     }
 }
