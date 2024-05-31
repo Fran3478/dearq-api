@@ -1,6 +1,7 @@
 import { create } from "../user/index.js"
 import sendEmail from "../email/sendEmail.js"
 import getUsername from "../user/getUsername.js"
+import { SignupError } from "../../errors/index.js"
 
 export default async (body) => {
     try {
@@ -9,7 +10,7 @@ export default async (body) => {
         const user = await create({username, email, password})
         sendEmail({email: user.email, username: user.username, token: user.token})
         return(user)
-    } catch (error) {
-        console.log(error)
+    } catch (err) {
+        throw new SignupError("Error al crear usuario", err)
     }
 }

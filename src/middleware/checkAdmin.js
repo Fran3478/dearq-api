@@ -9,11 +9,17 @@ export default (req, res, next) => {
         let token = null
         if(authorization && authorization.toLowerCase().startsWith(("bearer"))) {
             token = authorization.split(" ")[1]
+            const decoded = jwt.verify(token, _jwt.secret)
+            req._isAdmin = decoded._role === "admin"
+        } else {
+            req._isAdmin = false
         }
-        const decoded = jwt.verify(token, _jwt.secret)
-        req._user = {_id: decoded._id, _role: decoded._role}
         next()
-    } catch (error) {
-        next(error)
+    } catch (err) {
+        if(err instanceof JsonWebTokenError){
+            req._isAdmin = false
+            next()
+        }
+        next(err)
     }
 }

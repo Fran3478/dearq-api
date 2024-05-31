@@ -10,9 +10,7 @@ export default async ({username, email, token}) => {
             subject: "Verificación de cuenta",
             html
         })
-        console.log(mail)
-    } catch (error) {
-        console.log(error)
-        throw new Error(error)
+    } catch (err) {
+        throw new EmailVerificationError("Ocurrió un error al intentar enviar el correo de verificación", err)
     }
 }

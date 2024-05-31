@@ -14,7 +14,17 @@ const Post = dbConfig.define("posts", {
         defaultValue: false
     },
     published_date: {
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        allowNull: true
+    },
+    deleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    },
+    deleted_date: {
+        type: DataTypes.DATE,
+        allowNull: true
     }
 })
 

@@ -3,6 +3,10 @@ const ERROR_HANDLERS = {
         res.status(401).json({error: message})
     },
 
+    SignupError: (res, {message}) => {
+        res.status(400).json({error: message})
+    },
+
     EmailVerificationError: (res, {message}) => {
         res.status(403).json({error: message})
     },
@@ -13,6 +17,14 @@ const ERROR_HANDLERS = {
 
     PostError: (res, {message}) => {
         res.status(500).json({error: message})
+    },
+
+    PostNotFoundError: (res, {message}) => {
+        res.status(404).json({error: message})
+    },
+
+    PostPublishedError: (res, {message}) => {
+        res.status(409).json({error: message})
     },
 
     defaultError: res => {
