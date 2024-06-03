@@ -9,5 +9,5 @@ export {
     publish,
     getPosts,
     getPostById,
-    deletePost
+    deletePost,
 }
