@@ -70,7 +70,7 @@ export class PostPublishedError extends Error {
     }
 }
 
-export class PostFindError extends Error {
+export class PostSearchError extends Error {
     constructor (message, orig_error) {
         super(message)
         this.name = "PostFindError"
