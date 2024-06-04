@@ -1,4 +1,4 @@
-import { PostFindError } from "../../errors/index.js"
+import { PostSearchError } from "../../errors/index.js"
 import {PostView} from "../../models/index.js"
 import findAll from "../post/findAll.js"
 
@@ -36,6 +36,6 @@ export default async ({page, category = ""}) => {
         results.totalPages = totalPages
         return results
     } catch (err) {
-        throw new PostFindError("Error al recuperar las publicaciones", err)
+        throw new PostSearchError("Error al recuperar las publicaciones", err)
     }
 }

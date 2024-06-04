@@ -26,6 +26,9 @@ const ERROR_HANDLERS = {
     PostPublishedError: (res, {message}) => {
         res.status(409).json({error: message})
     },
+    PostDeleteError: (res, {message}) => {
+        res.status(409).json({error: message})
+    },
 
     defaultError: res => {
         res.status(500).json({error: "Ha ocurrido un error interno en el servidor"}).end()

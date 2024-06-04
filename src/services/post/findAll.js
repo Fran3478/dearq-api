@@ -1,4 +1,4 @@
-import { PostFindError } from "../../errors/index.js"
+import { PostSearchError } from "../../errors/index.js"
 import {Post} from "../../models/index.js"
 
 export default async (options) => {
@@ -9,7 +9,7 @@ export default async (options) => {
             rows
         }
     } catch (err) {
-        throw new PostFindError("Error al recuperar las publicaciones", err)
+        throw new PostSearchError("Error al recuperar las publicaciones", err)
     }
     
 }

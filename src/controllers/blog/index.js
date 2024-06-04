@@ -3,6 +3,7 @@ import publishPost from "./publishPost.js"
 import listPosts from "./listPosts.js"
 import getPost from "./getPost.js"
 import deletePost from "./deletePost.js"
+import forceDelete from "./forceDelete.js"
 
 export {
     newPost,
@@ -10,4 +11,5 @@ export {
     listPosts,
     getPost,
     deletePost,
+    forceDelete
 }
