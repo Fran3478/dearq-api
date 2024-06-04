@@ -11,7 +11,6 @@ export default async (postId) => {
             where: {id: postId, deleted: true},
             transaction
         })
-        console.log(postDeletion)
         if(!postDeletion) {
             throw new PostDeleteError("La publicación no está autorizada para eliminación o ya fue eliminada")
         }
