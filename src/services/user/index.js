@@ -6,6 +6,7 @@ import getUsername from "./getUsername.js"
 import checkAdmin from "./checkAdmin.js"
 import recoverPassword from "./recoverPassword.js"
 import resetPassword from "./resetPassword.js"
+import verifyEmail from "./verifyEmail.js"
 
 export {
     checkExist,
@@ -15,5 +16,6 @@ export {
     getUsername,
     checkAdmin,
     recoverPassword,
-    resetPassword
+    resetPassword,
+    verifyEmail
 }

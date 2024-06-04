@@ -14,6 +14,10 @@ const validateSigninUser = [
     passwordSignin
 ]
 
+const validateVerification = [
+    token
+]
+
 const validateForgetPassword = [
     recovery
 ]
@@ -26,6 +30,7 @@ const validateResetPassword = [
 export {
     validateSignupUser,
     validateSigninUser,
+    validateVerification,
     validateForgetPassword,
     validateResetPassword
 }
