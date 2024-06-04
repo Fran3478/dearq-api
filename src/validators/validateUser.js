@@ -1,14 +1,36 @@
-import email from "./email.js"
+import {email, recovery} from "./email.js"
 import {passwordSignup, passwordSignin} from "./password.js"
 import {usernameSignup, usernameSignin} from "./username.js"
+import {token} from "./token.js"
 
-export const validateSignupUser = [
+const validateSignupUser = [
     usernameSignup,
     email,
     passwordSignup
 ]
 
-export const validateSigninUser = [
+const validateSigninUser = [
     usernameSignin,
     passwordSignin
 ]
+
+const validateVerification = [
+    token
+]
+
+const validateForgetPassword = [
+    recovery
+]
+
+const validateResetPassword = [
+    token,
+    passwordSignup
+]
+
+export {
+    validateSignupUser,
+    validateSigninUser,
+    validateVerification,
+    validateForgetPassword,
+    validateResetPassword
+}

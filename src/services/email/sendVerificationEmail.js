@@ -1,5 +1,6 @@
 import transporter from "../../config/emailer.js"
 import htmlGen from "../../template/verificationEmail.js"
+import { EmailVerificationError } from "../../errors/index.js"
 
 export default async ({username, email, token}) => {
     try {

@@ -1,6 +1,7 @@
 import config from "../config/index.js"
 
 const {email} = config
+const logo = ""
 
 export default ({username, token}) => {
     const html = `<html lang="en">
@@ -8,14 +9,14 @@ export default ({username, token}) => {
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>DEArq - Verificación de Email</title>
+            <title>DEArq - Recuperación de Cuenta</title>
         </head>
         <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
         
             <table style="max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 10px;">
                 <tr>
                     <td style="text-align: center;">
-                        <img src="https://example.com/dearq_logo.png" alt="DEArq Logo" style="max-width: 150px;">
+                        <img src="${logo}" alt="DEArq Logo" style="max-width: 150px;">
                     </td>
                 </tr>
                 <tr>

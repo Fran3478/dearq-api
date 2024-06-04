@@ -4,6 +4,9 @@ import getType from "./getType.js"
 import getUser from "./getUser.js"
 import getUsername from "./getUsername.js"
 import checkAdmin from "./checkAdmin.js"
+import recoverPassword from "./recoverPassword.js"
+import resetPassword from "./resetPassword.js"
+import verifyEmail from "./verifyEmail.js"
 
 export {
     checkExist,
@@ -11,5 +14,8 @@ export {
     getType,
     getUser,
     getUsername,
-    checkAdmin
+    checkAdmin,
+    recoverPassword,
+    resetPassword,
+    verifyEmail
 }

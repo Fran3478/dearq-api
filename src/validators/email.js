@@ -16,4 +16,18 @@ const email = body("email")
         if(isUsed) throw new Error("El email ya esta asociado a un usuario")
     })
 
-export default email
+const recovery = body("email")
+    .escape()
+    .trim()
+    .notEmpty()
+    .isEmail()
+    .withMessage("Correo invalido")
+    .custom(async (value) => {
+        const isUsed = await inUse(value)
+        if(!isUsed) throw new Error("El email no esta asociado a ningún usuario")
+    })
+
+export {
+    email,
+    recovery
+}
