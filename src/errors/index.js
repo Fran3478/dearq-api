@@ -22,6 +22,30 @@ export class EmailVerificationError extends Error {
     }
 }
 
+export class EmailRecoveryError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "EmailRecoveryError"
+        this.orig_error = orig_error
+    }
+}
+
+export class UserNotFoundError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "UserNotFoundError"
+        this.orig_error = orig_error
+    }
+}
+
+export class RecoveryError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "RecoveryError"
+        this.orig_error = orig_error
+    }
+}
+
 export class PostError extends Error {
     constructor (message, orig_error, status) {
         super(message)

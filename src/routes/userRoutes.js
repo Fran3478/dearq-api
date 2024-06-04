@@ -1,9 +1,11 @@
 import { Router } from "express"
-import validateToken from "../middleware/validateToken.js"
+import { validateForgetPassword } from "../validators/validateUser.js"
+import forgotPassword from "../controllers/user/forgotPassword.js"
 
 const route = Router()
 
 export default (app) => {
     app.use("/user", route)
-    route.post("/recover-password", validateToken, )
+    route.post("/forgot-password", validateForgetPassword, forgotPassword)
+    route.post("/reset-password",)
 }
