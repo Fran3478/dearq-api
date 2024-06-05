@@ -26,8 +26,13 @@ const ERROR_HANDLERS = {
     PostPublishedError: (res, {message}) => {
         res.status(409).json({error: message})
     },
+
     PostDeleteError: (res, {message}) => {
         res.status(409).json({error: message})
+    },
+
+    CategoryError: (res, {message}) => {
+        res.status(500).json({error: message})
     },
 
     defaultError: res => {

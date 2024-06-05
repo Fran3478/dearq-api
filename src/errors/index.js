@@ -117,3 +117,11 @@ export class PostDeleteError extends Error {
         this.orig_error = orig_error
     }
 }
+
+export class CategoryError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CategoryError"
+        this.orig_error = orig_error
+    }
+}
