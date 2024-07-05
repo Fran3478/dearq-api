@@ -14,6 +14,14 @@ export class SignupError extends Error {
     }
 }
 
+export class PermissionError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "PermissionError"
+        this.orig_error = orig_error
+    }
+}
+
 export class EmailVerificationError extends Error {
     constructor (message, orig_error) {
         super(message)
@@ -74,6 +82,14 @@ export class PostContentCreationError extends Error {
     constructor (message, orig_error) {
         super(message)
         this.name = "PostContentCreationError"
+        this.orig_error = orig_error
+    }
+}
+
+export class PostSanitizeError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "PostSanitizeError"
         this.orig_error = orig_error
     }
 }

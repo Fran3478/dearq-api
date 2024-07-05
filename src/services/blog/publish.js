@@ -1,6 +1,5 @@
 import { PostError, PostNotFoundError, PostSearchError, PostPublishedError } from "../../errors/index.js"
-import {getPost} from "../post/index.js"
-import publishPost from "../post/publishPost.js"
+import {getPost, publishPost} from "../post/index.js"
 
 export default async ({id}) => {
     try {

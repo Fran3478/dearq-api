@@ -4,6 +4,9 @@ import savePost from "./savePost.js"
 import getPost from "./getPost.js"
 import softDelete from "./softDelete.js"
 import hardDelete from "./hardDelete.js"
+import publishPost from "./publishPost.js"
+import findAll from "./findAll.js"
+import sanitizeHTML from "./sanitizeHTML.js"
 
 export {
     saveContent,
@@ -11,5 +14,8 @@ export {
     savePost,
     getPost,
     softDelete,
-    hardDelete
+    hardDelete,
+    publishPost,
+    findAll,
+    sanitizeHTML
 }

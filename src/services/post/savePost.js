@@ -3,10 +3,10 @@ import { Post } from "../../models/index.js"
 import {saveContent, saveView} from "./index.js"
 
 
-export default async ({user, title, img, img_title, content, transaction}) => {
+export default async ({user, title, img, img_title, content, description, transaction}) => {
     try {
         const post = await Post.create({transaction})
-        const postView = await saveView({title, img, img_title, transaction})
+        const postView = await saveView({title, img, img_title, description, transaction})
         const postContent = await saveContent({content, transaction})
 
         await post.setUser(user, {transaction})
