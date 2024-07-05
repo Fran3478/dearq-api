@@ -4,6 +4,7 @@ import auth from "./authRoutes.js"
 import blog from "./blogRoutes.js"
 import test from "./testRoutes.js"
 import category from "./categoryRoutes.js"
+import admin from "./adminRoutes.js"
 
 export default () => {
     const app = Router()
@@ -12,6 +13,7 @@ export default () => {
     blog(app)
     test(app)
     category(app)
+    admin(app)
 
     return app
 }

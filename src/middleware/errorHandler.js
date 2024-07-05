@@ -35,6 +35,10 @@ const ERROR_HANDLERS = {
         res.status(500).json({error: message})
     },
 
+    PermissionError: (res, {message}) => {
+        res.status(403).json({error: message})
+    },
+
     defaultError: res => {
         res.status(500).json({error: "Ha ocurrido un error interno en el servidor"}).end()
     }

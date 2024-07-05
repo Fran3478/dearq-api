@@ -1,9 +1,11 @@
 import config from "../config/index.js"
 
-const {email} = config
+const {email, client} = config
 const logo = ""
 
 export default ({username, token}) => {
+    const url = client.baseUrl + "/" + email.verificationUrl + "/" + token
+    console.log("url : ", url)
     const html = `<html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -24,7 +26,7 @@ export default ({username, token}) => {
                         <h2 style="margin-top: 0;">¡Bienvenido a DEArq!</h2>
                         <p>Hola ${username}! 👋</p>
                         <p>Gracias por registrarte en DEArq. Por favor, haz clic en el siguiente enlace para verificar tu dirección de correo electrónico:</p>
-                        <p style="text-align: center;"><a href="${email.verificationUrl, "/", token}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Verificar Email</a></p>
+                        <p style="text-align: center;"><a href="${url}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Verificar Email</a></p>
                         <p>Si no te has registrado en DEArq, puedes ignorar este correo electrónico.</p>
                         <p>¡Gracias!</p>
                         <p>Equipo DEArq</p>

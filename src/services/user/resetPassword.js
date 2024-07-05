@@ -1,5 +1,5 @@
 import { sequelize } from "../../models/index.js"
-import {getUser} from "../user/index.js"
+import {getUser} from "./index.js"
 import bcrypt from "bcrypt"
 
 export default async ({password, token}) => {

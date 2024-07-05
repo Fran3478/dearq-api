@@ -1,11 +1,11 @@
-import {email, recovery} from "./email.js"
+import {emailCreate, emailRecovery, emailResend} from "./email.js"
 import {passwordSignup, passwordSignin} from "./password.js"
 import {usernameSignup, usernameSignin} from "./username.js"
 import {tokenBody, tokenParam} from "./token.js"
 
 const validateSignupUser = [
     usernameSignup,
-    email,
+    emailCreate(),
     passwordSignup
 ]
 
@@ -19,7 +19,7 @@ const validateVerification = [
 ]
 
 const validateForgetPassword = [
-    recovery
+    emailRecovery()
 ]
 
 const validateResetPassword = [
@@ -27,10 +27,15 @@ const validateResetPassword = [
     passwordSignup
 ]
 
+const validateResendEmail = [
+    emailResend()
+]
+
 export {
     validateSignupUser,
     validateSigninUser,
     validateVerification,
     validateForgetPassword,
-    validateResetPassword
+    validateResetPassword,
+    validateResendEmail
 }

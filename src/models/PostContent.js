@@ -9,7 +9,7 @@ const PostContent = dbConfig.define("postContent", {
         allowNull: false
     },
     content: {
-        type: DataTypes.JSONB,
+        type: DataTypes.TEXT,
         allowNull: false
     }
 })

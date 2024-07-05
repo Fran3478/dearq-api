@@ -4,6 +4,8 @@ import listPosts from "./listPosts.js"
 import getPost from "./getPost.js"
 import deletePost from "./deletePost.js"
 import forceDelete from "./forceDelete.js"
+import adminListPosts from "./adminListPosts.js"
+import adminGetPost from "./adminGetPost.js"
 
 export {
     newPost,
@@ -11,5 +13,7 @@ export {
     listPosts,
     getPost,
     deletePost,
-    forceDelete
+    forceDelete,
+    adminListPosts,
+    adminGetPost
 }

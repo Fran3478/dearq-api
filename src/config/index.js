@@ -30,6 +30,9 @@ export default {
     },
     _jwt: {
         secret: process.env.SECRET_JWT
+    },
+    client: {
+        baseUrl: process.env.CLIENT_BASE_URL
     }
     
 }
