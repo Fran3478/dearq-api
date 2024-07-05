@@ -19,6 +19,10 @@ const PostView = dbConfig.define("postView", {
     img_title: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: false
     }
 })
 
