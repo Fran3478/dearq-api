@@ -5,11 +5,11 @@ import {saveContent, saveView} from "./index.js"
 
 export default async ({user, title, img, img_title, content, description, transaction}) => {
     try {
-        const post = await Post.create({transaction})
+        const currentDate = new Date()
+        const post = await Post.create({authorId: user, created_date: currentDate}, {transaction})
         const postView = await saveView({title, img, img_title, description, transaction})
         const postContent = await saveContent({content, transaction})
 
-        await post.setUser(user, {transaction})
         await post.setPostView(postView, {transaction})
         await post.setPostContent(postContent, {transaction})
         return post

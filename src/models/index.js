@@ -6,8 +6,12 @@ import PostContent from "./PostContent.js"
 import PostView from "./PostView.js"
 import User from "./User.js"
 
-User.hasMany(Post, {foreignKey: "userId"})
-Post.belongsTo(User, {foreignKey: "userId"})
+User.hasMany(Post, {foreignKey: "authorId", as: "authoredPosts"})
+User.hasMany(Post, {foreignKey: "publisherId", as: "publishedPosts"})
+User.hasMany(Post, {foreignKey: "unpublisherId", as: "unpublishedPosts"})
+Post.belongsTo(User, {foreignKey: "authorId", as: "author"})
+Post.belongsTo(User, {foreignKey: "publisherId", as: "publisher"})
+Post.belongsTo(User, {foreignKey: "unpublisherId", as: "unpublisher"})
 Post.hasOne(PostView, {foreignKey: "postId", as: "postView"})
 PostView.belongsTo(Post, {foreignKey: "postId", as: "post"})
 Post.hasOne(PostContent, {foreignKey: "postId", as: "postContent"})
