@@ -1,6 +1,6 @@
 import { Router } from "express"
-import { validateVerification, validateForgetPassword, validateResetPassword, validateResendEmail } from "../validators/validateUser.js"
-import { verifyEmail, forgotPassword, resetPassword, resendEmail } from "../controllers/user/index.js"
+import { validateVerification, validateForgetPassword, validateResetPassword, validateResendEmail } from "../../validators/validateUser.js"
+import { verifyEmail, forgotPassword, resetPassword, resendEmail } from "../../controllers/user/index.js"
 
 const route = Router()
 
