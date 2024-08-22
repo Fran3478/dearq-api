@@ -1,10 +1,10 @@
 import { PermissionError } from "../errors/index.js"
-import {getUser} from "../services/user/index.js"
+import {find} from "../repositories/user/index.js"
 
 export default async (req, res, next) => {
     try {
         if(req._user._role === "admin"){
-            const user = await getUser({username: req._user._id, type: "id"})
+            const user = await find({username: req._user._id, type: "id"})
             if(user?.role === "admin") return next()
         }
         throw new PermissionError("No posee permiso para la acción solicitada")

@@ -1,10 +1,10 @@
 import sendRecoveryEmail from "../email/sendRecoveryEmail.js"
 import { generateToken } from "../token/index.js"
-import {getUser} from "./index.js"
+import { find } from "../../repositories/user/index.js"
 
 export default async (email) => {
     try {
-        const user = await getUser({username: email, type: "email"})
+        const user = await find({username: email, type: "email"})
         const token = generateToken()
         user.token = token
         await user.save()
