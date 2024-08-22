@@ -12,12 +12,36 @@ const Comment = dbConfig.define("comments", {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    created_date: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    edited: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    edited_date: {
+        type: DataTypes.DATE,
+        allowNull: true
+    },
     blocked: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
     block_reason: {
         type: DataTypes.STRING
+    },
+    bloqued_date: {
+        type: DataTypes.DATE,
+        allowNull: true
+    },
+    deleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    deleted_date: {
+        type: DataTypes.DATE,
+        allowNull: true
     }
 })
 
