@@ -1,36 +1,25 @@
 import { PostSearchError } from "../../errors/index.js"
-import {PostView} from "../../models/index.js"
-import {findAll} from "../post/index.js"
+import {findAll} from "../../repositories/post/index.js"
 
 export default async ({page, category = ""}) => {
     try {
         const pageSize = 5
-        const options = {
-            limit: pageSize,
-            offset: (page - 1) * pageSize,
-            where: {
-                deleted: false,
-                published: true
-            },
-            include: [{
-                model: PostView,
-                as: "postView",
-                attributes: { exclude: ['postId', 'createdAt', 'updatedAt'] }
-            }],
-            attributes: { exclude: ['userId', 'deleted', 'deleted_date', 'createdAt', 'updatedAt'] },
-            order: [["published_date", "DESC"]]
+        const searchParameters = {
+            pageSize,
+            page,
+            published: false
         }
  
         if(category) {
-            options.where = {...options.where, category: category}
+            searchParameters.category = category
         }
         
-        let results = await findAll(options)
+        let results = await findAll({searchParameters})
         const totalPages = Math.ceil(results.totalPosts / pageSize)
 
         if(totalPages < page){
-            options.offset = 0
-            results = await findAll(options)
+            searchParameters.offset = 0
+            results = await findAll({searchParameters})
             results.currentPage = 1
         } else results.currentPage = page
         

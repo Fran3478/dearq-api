@@ -1,5 +1,5 @@
-import {PostContent} from "../../models/index.js"
 import { PostContentCreationError } from "../../errors/index.js"
+import { PostContent } from "../../models/index.js"
 
 export default async ({content, transaction}) => {
     try {
