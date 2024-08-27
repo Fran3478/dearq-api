@@ -134,10 +134,25 @@ export class PostDeleteError extends Error {
     }
 }
 
+export class PostUpdateError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "PostUpdateError"
+        this.orig_error = orig_error
+    }
+}
+
 export class CategoryError extends Error {
     constructor (message, orig_error) {
         super(message)
         this.name = "CategoryError"
+        this.orig_error = orig_error
+    }
+}
+export class CategoryNotFoundError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CategoryNotFoundError"
         this.orig_error = orig_error
     }
 }

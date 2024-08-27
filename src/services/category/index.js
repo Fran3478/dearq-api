@@ -4,6 +4,7 @@ import getCategories from "./getCategories.js"
 import changeTitle from "./changeTitle.js"
 import getCategory from "./getCategory.js"
 import deleteCategory from "./deleteCategory.js"
+import bulkCheckExist from "./bulkCheckExist.js"
 
 export {
     createCategory,
@@ -11,5 +12,6 @@ export {
     getCategories,
     changeTitle,
     getCategory,
-    deleteCategory
+    deleteCategory,
+    bulkCheckExist
 }
