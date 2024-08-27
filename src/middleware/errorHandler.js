@@ -38,6 +38,14 @@ const ERROR_HANDLERS = {
     PermissionError: (res, {message}) => {
         res.status(403).json({error: message})
     },
+    
+    UserNotFoundError: (res, {message}) => {
+        res.status(404).json({error: message})
+    },
+    
+    CategoryNotFoundError: (res, {message}) => {
+        res.status(404).json({error: message})
+    },
 
     defaultError: res => {
         res.status(500).json({error: "Ha ocurrido un error interno en el servidor"}).end()

@@ -2,7 +2,7 @@ import { body } from "express-validator"
 import {checkExist} from "../services/category/index.js"
 
 const inUse = (title) => {
-    return checkExist(title)
+    return checkExist({value: title, type: "title"})
 }
 
 const title = body("title")
