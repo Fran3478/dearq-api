@@ -1,8 +1,8 @@
-import getUser from "./getUser.js"
+import { find } from "../../repositories/user/index.js"
 
 export default async (id) => {
     try {
-        const user = await getUser({username: id, type: "id"})
+        const user = await find({username: id, type: "id"})
         if(user.role !== "admin") return {admin: false, data: user}
         return {admin: true, data: user}
     } catch (err) {

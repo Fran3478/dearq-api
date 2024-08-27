@@ -1,10 +1,10 @@
 import { sequelize } from "../../models/index.js"
-import {getUser} from "./index.js"
+import { find } from "../../repositories/user/index.js"
 
 export default async (token) => {
     const transaction = await sequelize.transaction()
     try {
-        const user = await getUser({username: token, type: "token"})
+        const user = await find({username: token, type: "token"})
         user.verified = true
         user.token = null
         await user.save()

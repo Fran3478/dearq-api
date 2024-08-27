@@ -1,11 +1,11 @@
 import { sequelize } from "../../models/index.js"
-import {getUser} from "./index.js"
+import { find } from "../../repositories/user/index.js"
 import bcrypt from "bcrypt"
 
 export default async ({password, token}) => {
     const transaction = await sequelize.transaction()
     try {
-        const user = await getUser({username: token, type: "token"})
+        const user = await find({username: token, type: "token"})
         const salt = await bcrypt.genSalt(10)
         user.password = await bcrypt.hash(password, salt)
         user.token = null
