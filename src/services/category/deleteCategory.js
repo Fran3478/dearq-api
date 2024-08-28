@@ -1,17 +1,17 @@
-import { CategoryError } from "../../errors/index.js"
-import { Category, sequelize } from "../../models/index.js"
+import { CategoryNotFoundError } from "../../errors/index.js"
+import {sequelize} from "../../models/index.js"
+import {deleteCategory, unlinkPost} from "../../repositories/category/index.js"
+import checkExist from "./checkExist.js"
 
-export default async ({id, transaction}) => {
+export default async ({id}) => {
+    const transaction = await sequelize.transaction()
     try {
-        await sequelize.models.post_category.destroy({
-            where: { categoryId: id },
-            transaction
-        })
-        await Category.destroy({
-            where: {id},
-            transaction
-        })
+        if(await checkExist({value: id, type: "id"}) === false) throw new CategoryNotFoundError("No se pudo encontrar la categoría")
+        await unlinkPost({id, transaction})
+        await deleteCategory({id, transaction})
+        await transaction.commit()
     } catch (err) {
-        throw new CategoryError("No se pudo eliminar la categoria", err)
+        await transaction.rollback()
+        throw err
     }
 }

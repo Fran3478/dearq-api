@@ -1,11 +1,10 @@
-import { CategoryError } from "../../errors/index.js"
-import { Category } from "../../models/index.js"
+import { findAll } from "../../repositories/category/index.js"
 
 export default async () => {
     try {
-        const categories = await Category.findAll()
+        const categories = await findAll()
         return categories
     } catch (err) {
-        throw CategoryError("Error al obtener las categorias", err)
+        throw err
     }
 }
