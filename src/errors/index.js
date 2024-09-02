@@ -149,10 +149,51 @@ export class CategoryError extends Error {
         this.orig_error = orig_error
     }
 }
+
 export class CategoryNotFoundError extends Error {
     constructor (message, orig_error) {
         super(message)
         this.name = "CategoryNotFoundError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentCreationError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentCreationError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentSearchError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentSearchError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentNotFoundError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentNotFoundError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentUpdateError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentUpdateError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentDeleteError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentDeleteError"
         this.orig_error = orig_error
     }
 }
