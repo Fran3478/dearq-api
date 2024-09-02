@@ -8,8 +8,8 @@ export default async (req, res, next) => {
             return res.status(422).json({ errors: errors.array() });
         }
         const {title} = req.body
-        const category = await createCategory(title) 
-        return res.status(200).json({message: "Se creo la categoria"})
+        const category = await createCategory({title}) 
+        return res.status(200).json({message: "Se creo la categoria", category})
     } catch (err) {
         next(err)
     }

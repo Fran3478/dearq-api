@@ -10,5 +10,5 @@ export default (app) => {
     route.get("/", listCategories)
     route.post("/new", validateToken, validateTitle, newCategory)
     route.put("/edit/:id", validateToken, validateTitle, editCategory)
-    route.delete("/delete/:id", validateToken, deleteCategory)
+    route.delete("/delete/:id", validateToken, validateTitle, deleteCategory)
 }

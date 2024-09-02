@@ -13,7 +13,7 @@ const title = body("title")
     .custom(async value => {
         if(value) {
             const isUsed = await inUse(value)
-            if(isUsed) throw new Error("La categoria ya existe")
+            if(isUsed) throw new Error("El título ya registrado como una categoría")
         }
     })
 
