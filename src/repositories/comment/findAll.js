@@ -1,3 +1,4 @@
+import { Sequelize } from "sequelize"
 import { CommentSearchError } from "../../errors/index.js"
 import { Comment } from "../../models/index.js"
 
@@ -8,13 +9,21 @@ export default async ({searchParameters}) => {
             offset: (searchParameters.page - 1) * searchParameters.pageSize,
             where: {
                 parentId: null,
-                blocked: false,
                 deleted: false
             },
             attributes: {
                 include: [
                     [
                         Sequelize.fn("COUNT", Sequelize.col("repplies.id")), "repliesCount"
+                    ],
+                    [
+                        Sequelize.literal(`
+                            CASE 
+                                WHEN "Comment"."bloqued" = true
+                                THEN "Comentario bloqueado con un administrador"
+                                ELSE "Comment"."comment" 
+                            END
+                        `), "comment"
                     ]
                 ]
             },
@@ -36,8 +45,14 @@ export default async ({searchParameters}) => {
         if(searchParameters.where) {
             options.where = {...options.where, ...searchParameters.where}
         }
-        const comments = await Comment.findAll(options)
-        return comments
+        if(searchParameters.offset) {
+            options.offset = searchParameters.offset
+        }
+        const {count, rows} = await Comment.findAndCountAll(options)
+        return {
+            totalComments: count,
+            comments: rows
+        }
     } catch (err) {
         throw new CommentSearchError("Error al recuperar los comentarios", err)
     }
