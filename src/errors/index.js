@@ -158,6 +158,14 @@ export class CategoryNotFoundError extends Error {
     }
 }
 
+export class CommentError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentError"
+        this.orig_error = orig_error
+    }
+}
+
 export class CommentCreationError extends Error {
     constructor (message, orig_error) {
         super(message)
