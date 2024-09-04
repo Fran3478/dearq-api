@@ -8,7 +8,7 @@ export default async ({commentId, userId, content}) => {
         const commentToEdit = await findById({id: commentId})
         if(commentToEdit.userId !== userId) throw new PermissionError("El usuario no posee permiso para editar el comentario")
         const updates = {
-            comment: content,
+            content,
             edited: true,
             edited_date: new Date()
         }

@@ -21,9 +21,9 @@ export default async ({searchParameters}) => {
                             CASE 
                                 WHEN "Comment"."bloqued" = true
                                 THEN "Comentario bloqueado con un administrador"
-                                ELSE "Comment"."comment" 
+                                ELSE "Comment"."content" 
                             END
-                        `), "comment"
+                        `), "content"
                     ]
                 ]
             },

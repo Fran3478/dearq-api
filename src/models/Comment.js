@@ -8,7 +8,7 @@ const Comment = dbConfig.define("comments", {
         primaryKey: true,
         allowNull: false
     },
-    comment: {
+    content: {
         type: DataTypes.TEXT,
         allowNull: false
     },
