@@ -215,3 +215,27 @@ export class CommentLikeSearchError extends Error {
         this.orig_error = orig_error
     }
 }
+
+export class CommentLikeDupError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentLikeDupError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentLikeCreationError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentLikeCreationError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentLikeIncrementError extends Error {
+    constructor(message, orig_error) {
+        super(message)
+        this.name = "CommentLikeIncrementError"
+        this.orig_error = orig_error
+    }
+}
