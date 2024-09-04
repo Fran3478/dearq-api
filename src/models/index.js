@@ -43,5 +43,6 @@ export {
     Post,
     PostContent,
     PostView,
-    User
+    User,
+    CommentLike
 }
