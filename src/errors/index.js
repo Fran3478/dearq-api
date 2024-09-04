@@ -1,3 +1,5 @@
+import { or } from "sequelize"
+
 export class LoginError extends Error {
     constructor (message, orig_error) {
         super(message)
@@ -202,6 +204,14 @@ export class CommentDeleteError extends Error {
     constructor (message, orig_error) {
         super(message)
         this.name = "CommentDeleteError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentLikeSearchError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentLikeSearchError"
         this.orig_error = orig_error
     }
 }
