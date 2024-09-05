@@ -1,5 +1,5 @@
-import { CommentDeleteError } from "../../errors"
-import { Comment } from "../../models"
+import { CommentDeleteError } from "../../errors/index.js"
+import { Comment } from "../../models/index.js"
 
 export default async ({id, transaction}) => {
     try {
