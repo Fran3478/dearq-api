@@ -239,3 +239,11 @@ export class CommentLikeIncrementError extends Error {
         this.orig_error = orig_error
     }
 }
+
+export class CommentLikeError extends Error {
+    constructor(message, orig_error) {
+        super(message)
+        this.name = "CommentLikeError"
+        this.orig_error = orig_error
+    }
+}
