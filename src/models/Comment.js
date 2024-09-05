@@ -12,6 +12,10 @@ const Comment = dbConfig.define("comments", {
         type: DataTypes.TEXT,
         allowNull: false
     },
+    likesCount: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
     created_date: {
         type: DataTypes.DATE,
         allowNull: false
