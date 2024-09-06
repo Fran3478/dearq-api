@@ -10,7 +10,7 @@ export default (app) => {
     route.get("/:id",validateToken, checkAdmin, adminGetPost)
     route.post("/new", validateToken, checkAdmin, newPost)
     route.post("/publish/:id/:action", validateToken, checkAdmin, publishPost)
-    route.put("/edit/:id", validateToken, checkAdmin, updatePost)
+    route.patch("/edit/:id", validateToken, checkAdmin, updatePost)
     route.delete("/delete/:id/:action",validateToken, checkAdmin, deletePost)
     route.delete("/force-delete/:id",validateToken, checkAdmin, forceDelete)
 }
