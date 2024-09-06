@@ -216,6 +216,14 @@ export class CommentLikeSearchError extends Error {
     }
 }
 
+export class CommentLikeNotFoundError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentNotFoundError"
+        this.orig_error = orig_error
+    }
+}
+
 export class CommentLikeDupError extends Error {
     constructor (message, orig_error) {
         super(message)
@@ -232,10 +240,10 @@ export class CommentLikeCreationError extends Error {
     }
 }
 
-export class CommentLikeIncrementError extends Error {
+export class CommentLikeCountError extends Error {
     constructor(message, orig_error) {
         super(message)
-        this.name = "CommentLikeIncrementError"
+        this.name = "CommentLikeCountError"
         this.orig_error = orig_error
     }
 }

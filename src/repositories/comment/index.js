@@ -6,6 +6,8 @@ import deleteComment from "./deleteComment.js"
 import findLike from "./findLike.js"
 import likeComment from "./likeComment.js"
 import incremetLike from "./incremetLike.js"
+import removeLike from "./removeLike.js"
+import decrementLike from "./decrementLike.js"
 
 export {
     create,
@@ -15,5 +17,7 @@ export {
     deleteComment,
     findLike,
     likeComment,
-    incremetLike
+    incremetLike,
+    removeLike,
+    decrementLike
 }
