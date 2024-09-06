@@ -1,4 +1,4 @@
-import { CommentLikeCreationError, CommentLikeDupError, CommentLikeError, CommentLikeIncrementError } from "../../errors/index.js"
+import { CommentLikeCreationError, CommentLikeDupError, CommentLikeError, CommentLikeCountError } from "../../errors/index.js"
 import {sequelize} from "../../models/index.js"
 import { findLike, incremetLike, likeComment } from "../../repositories/comment/index.js"
 
@@ -16,7 +16,7 @@ export default async ({userId, commentId}) => {
     } catch (err) {
         await transaction.rollback()
         if(err instanceof CommentLikeDupError) throw err
-        if(err instanceof CommentLikeCreationError || err instanceof CommentLikeIncrementError) throw new CommentLikeError(err.message, err.orig_error)
-        throw new CommentLikeError(err)
+        if(err instanceof CommentLikeCreationError || err instanceof CommentLikeCountError) throw new CommentLikeError(err.message, err.orig_error)
+        throw new CommentLikeError("Hubo un error inesperado al añadir el me gusta", err)
     }
 }
