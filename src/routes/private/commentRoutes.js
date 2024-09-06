@@ -11,7 +11,7 @@ export default (app) => {
     route.post("/new/:postId/:commentId", validateToken, checkUser, validateContent, newReply)
     route.post("/like/:commentId", validateToken, checkUser, likeComment)
     route.delete("/like/:commentId", validateToken, checkUser, unlikeComment)
-    route.put("/edit/:commentId", validateToken, checkUser, validateContent, editComment)
+    route.patch("/edit/:commentId", validateToken, checkUser, validateContent, editComment)
     route.delete("/delete/:commentId", validateToken, checkUser, deleteComment)
     route.post("/block/:commentId", validateToken, checkAdmin, blockComment)
 }
