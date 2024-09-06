@@ -13,8 +13,10 @@ export default async ({commentId, userId, content}) => {
             edited_date: new Date()
         }
         const editedComment = await update({comment: commentToEdit, updates, transaction})
+        await transaction.commit()
         return editedComment
     } catch (err) {
+        await transaction.rollback()
         if(err instanceof PermissionError || err instanceof CommentNotFoundError) throw err
         if(err instanceof CommentSearchError ||  err instanceof CommentUpdateError) throw new CommentError(err.message, err.orig_error)
         throw new CommentError("Hubo un error al intentar actualizar el comentario", err)
