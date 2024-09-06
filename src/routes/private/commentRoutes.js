@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { checkAdmin, checkUser, validateToken } from "../../middleware/index.js";
-import { blockComment, deleteComment, editComment, likeComment, newComment, newReplay, unlikeComment } from "../../controllers/comment/index.js"
+import { blockComment, deleteComment, editComment, likeComment, newComment, newReply, unlikeComment } from "../../controllers/comment/index.js"
 import { validateContent } from "../../validators/validateComment.js"
 
 const route = Router()
@@ -8,7 +8,7 @@ const route = Router()
 export default (app) => {
     app.use("/comments", route)
     route.post("/new/:postId", validateToken, checkUser, validateContent, newComment)
-    route.post("/new/:postId/:commentId", validateToken, checkUser, validateContent, newReplay)
+    route.post("/new/:postId/:commentId", validateToken, checkUser, validateContent, newReply)
     route.post("/like/:commentId", validateToken, checkUser, likeComment)
     route.delete("/like/:commentId", validateToken, checkUser, unlikeComment)
     route.put("/edit/:commentId", validateToken, checkUser, validateContent, editComment)
