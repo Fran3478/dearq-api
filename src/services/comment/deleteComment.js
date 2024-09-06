@@ -1,6 +1,6 @@
 import { CommentError, CommentNotFoundError, CommentSearchError, CommentUpdateError, PermissionError } from "../../errors/index.js"
 import { sequelize } from "../../models/index.js"
-import { update } from "../../repositories/comment/index.js"
+import { findById, update } from "../../repositories/comment/index.js"
 
 export default async ({commentId, userId}) => {
     const transaction = await sequelize.transaction()
@@ -13,8 +13,10 @@ export default async ({commentId, userId}) => {
             deleted_date: new Date()
         }
         await update({comment: commentToDelete, updates, transaction})
+        await transaction.commit()
         return true
     } catch (err) {
+        await transaction.rollback()
         if(err instanceof PermissionError || err instanceof CommentNotFoundError) throw err
         if(err instanceof CommentSearchError ||  err instanceof CommentUpdateError) throw new CommentError(err.message, err.orig_error)
         throw new CommentError("Hubo un error al intentar eliminar el comentario", err)
