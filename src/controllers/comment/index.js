@@ -4,6 +4,7 @@ import editComment from "./editComment.js"
 import likeComment from "./likeComment.js"
 import deleteComment from "./deleteComment.js"
 import blockComment from "./blockComment.js"
+import unlikeComment from "./unlikeComment.js"
 
 export {
     newComment,
@@ -11,5 +12,6 @@ export {
     editComment,
     likeComment,
     deleteComment,
-    blockComment
+    blockComment,
+    unlikeComment
 }
