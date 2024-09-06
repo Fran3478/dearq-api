@@ -12,7 +12,7 @@ const CommentLike = dbConfig.define("commentLikes", {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: "Users",
+            model: "users",
             key: "id"
         },
         onDelete: "CASCADE"
@@ -21,7 +21,7 @@ const CommentLike = dbConfig.define("commentLikes", {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-            model: "Comments",
+            model: "comments",
             key: "id"
         },
         onDelete: "CASCADE"
