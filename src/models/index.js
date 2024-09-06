@@ -29,7 +29,7 @@ Comment.hasMany(Comment, {foreignKey: "parentId", as: "replies", onDelete: "CASC
 Comment.belongsTo(Comment, {foreignKey: "parentId", as: "parent", onDelete: "CASCADE"})
 Comment.belongsTo(User, {foreignKey: "userId", as: "author", onDelete: "CASCADE"})
 User.hasMany(Comment, {foreignKey: "userId", as: "authoredComments", onDelete: "CASCADE"})
-User.belongsToMany(Comment, {through: "commentLikes", foreignKey: "userid", as: "likedComments", onDelete: "CASCADE"})
+User.belongsToMany(Comment, {through: "commentLikes", foreignKey: "userId", as: "likedComments", onDelete: "CASCADE"})
 Comment.belongsToMany(User, {through: "commentLikes", foreignKey: "commentId", as: "usersWhoLiked", onDelete: "CASCADE"})
 User.hasMany(CommentLike, {foreignKey: "userId", as: "commentLikes", onDelete: "CASCADE"})
 Comment.hasMany(CommentLike, {foreignKey: "commentId", as: "likes", onDelete: "CASCADE"})
