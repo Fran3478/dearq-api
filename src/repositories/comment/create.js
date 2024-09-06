@@ -7,6 +7,6 @@ export default async ({content, userId, transaction, postId, parentId = null}) =
         const newComment = await Comment.create({content, created_date: currentDate, userId, postId, parentId}, {transaction})
         return newComment
     } catch (err) {
-        throw new CommentCreationError("No se pudo registrar el comentario")
+        throw new CommentCreationError("No se pudo registrar el comentario", err)
     }
 }
