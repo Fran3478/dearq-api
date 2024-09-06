@@ -47,6 +47,22 @@ const ERROR_HANDLERS = {
         res.status(404).json({error: message})
     },
 
+    CommentError: (res, {message}) => {
+        res.status(500).json({error: message})
+    },
+
+    CommentNotFoundError: (res, {message}) => {
+        res.status(404).json({error: message})
+    },
+
+    CommentLikeDupError: (res, {message}) => {
+        res.status(409).json({error: message})
+    },
+
+    CommentLikeError: (res, {message}) => {
+        res.status(500).json({error: message})
+    },
+
     defaultError: res => {
         res.status(500).json({error: "Ha ocurrido un error interno en el servidor"}).end()
     }
