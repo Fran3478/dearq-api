@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { checkAdmin, checkUser, validateToken } from "../../middleware/index.js";
 import { blockComment, deleteComment, editComment, likeComment, newComment, newReply, unlikeComment } from "../../controllers/comment/index.js"
-import { validateContent } from "../../validators/validateComment.js"
+import { validateContent, validateReason } from "../../validators/validateComment.js"
 
 const route = Router()
 
@@ -13,5 +13,5 @@ export default (app) => {
     route.delete("/like/:commentId", validateToken, checkUser, unlikeComment)
     route.patch("/edit/:commentId", validateToken, checkUser, validateContent, editComment)
     route.delete("/delete/:commentId", validateToken, checkUser, deleteComment)
-    route.patch("/block/:commentId", validateToken, checkAdmin, blockComment)
+    route.patch("/block/:commentId", validateToken, checkAdmin, validateReason, blockComment)
 }
