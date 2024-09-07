@@ -19,8 +19,12 @@ export default async ({searchParameters}) => {
                     [
                         Sequelize.literal(`
                             CASE 
+                                WHEN "Comment"."bloqued" = true AND "Comment"."deleted" = true
+                                    THEN "Comentario eliminado"
+                                WHEN "Comment"."deleted" = true
+                                    THEN "Comentario eliminado"
                                 WHEN "Comment"."bloqued" = true
-                                THEN "Comentario bloqueado con un administrador"
+                                    THEN "Comentario bloqueado por un administrador"
                                 ELSE "Comment"."content" 
                             END
                         `), "content"
