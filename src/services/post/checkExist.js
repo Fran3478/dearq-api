@@ -1,10 +1,13 @@
 import { PostNotFoundError, PostSearchError } from "../../errors/index.js"
 import { findById } from "../../repositories/post/index.js"
 
-export default async ({postId}) => {
+export default async ({postId, published = null}) => {
     try {
         const searchParameters = {
             where: {id: postId}
+        }
+        if(published !== null) {
+            searchParameters.where = {...searchParameters.where, published}
         }
         const post = await findById({searchParameters})
         return !!post
