@@ -255,3 +255,11 @@ export class CommentLikeError extends Error {
         this.orig_error = orig_error
     }
 }
+
+export class CommentBlockError extends Error {
+    constructor(message, orig_error) {
+        super(message)
+        this.name = "CommentBlockError"
+        this.orig_error = orig_error
+    }
+}

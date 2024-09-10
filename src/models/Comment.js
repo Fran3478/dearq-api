@@ -35,7 +35,7 @@ const Comment = dbConfig.define("comments", {
     block_reason: {
         type: DataTypes.STRING
     },
-    bloqued_date: {
+    blocked_date: {
         type: DataTypes.DATE,
         allowNull: true
     },

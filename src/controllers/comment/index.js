@@ -5,6 +5,8 @@ import likeComment from "./likeComment.js"
 import deleteComment from "./deleteComment.js"
 import blockComment from "./blockComment.js"
 import unlikeComment from "./unlikeComment.js"
+import getComments from "./getComments.js"
+import getReplies from "./getReplies.js"
 
 export {
     newComment,
@@ -13,5 +15,7 @@ export {
     likeComment,
     deleteComment,
     blockComment,
-    unlikeComment
+    unlikeComment,
+    getComments,
+    getReplies
 }
