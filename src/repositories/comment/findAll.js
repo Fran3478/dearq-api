@@ -1,62 +1,60 @@
 import { Sequelize } from "sequelize"
 import { CommentSearchError } from "../../errors/index.js"
-import { Comment } from "../../models/index.js"
+import { Comment, sequelize } from "../../models/index.js"
 
 export default async ({searchParameters}) => {
     try {
         const options = {
             limit: searchParameters.pageSize,
-            offset: (searchParameters.page - 1) * searchParameters.pageSize,
+            offset: searchParameters.offset || (searchParameters.page - 1) * searchParameters.pageSize,
             where: {
-                parentId: null,
-                deleted: false
+                parentId: searchParameters.parentId || null
             },
+            
             attributes: {
                 include: [
-                    [
-                        Sequelize.fn("COUNT", Sequelize.col("repplies.id")), "repliesCount"
+                      [
+                        Sequelize.literal(`(
+                            SELECT COUNT(*)
+                            FROM "comments" AS "replies"
+                            WHERE "replies"."parentId" = "comments"."id"
+                        )`), 
+                        "repliesCount"
                     ],
                     [
                         Sequelize.literal(`
                             CASE 
-                                WHEN "Comment"."bloqued" = true AND "Comment"."deleted" = true
-                                    THEN "Comentario eliminado"
-                                WHEN "Comment"."deleted" = true
-                                    THEN "Comentario eliminado"
-                                WHEN "Comment"."bloqued" = true
-                                    THEN "Comentario bloqueado por un administrador"
-                                ELSE "Comment"."content" 
+                                WHEN "comments"."blocked" = true AND "comments"."deleted" = true
+                                    THEN 'Comentario eliminado'
+                                WHEN "comments"."deleted" = true
+                                    THEN 'Comentario eliminado'
+                                WHEN "comments"."blocked" = true
+                                    THEN 'Comentario bloqueado por un administrador'
+                                ELSE "comments"."content" 
                             END
                         `), "content"
                     ]
-                ]
+                ],
             },
             include: [
                 {
                     model: Comment,
                     as: "replies",
                     attributes: [],
-                    where: {
-                        blocked: false,
-                        deleted: false
-                    },
                     required: false
                 }
             ],
-            group: ["Comment.id"],
             order: [["created_date", "ASC"]]
         }
         if(searchParameters.where) {
-            options.where = {...options.where, ...searchParameters.where}
+            options.where =  {...options.where, ...searchParameters.where}
         }
-        if(searchParameters.offset) {
-            options.offset = searchParameters.offset
-        }
-        const {count, rows} = await Comment.findAndCountAll(options)
-        return {
-            totalComments: count,
-            comments: rows
-        }
+        const countComments = Comment.count({
+            where: options.where
+        })
+        const findComments = Comment.findAll(options)
+        const [totalComments, rows] = await Promise.all([countComments, findComments])
+        return {totalComments, rows}
     } catch (err) {
         throw new CommentSearchError("Error al recuperar los comentarios", err)
     }
