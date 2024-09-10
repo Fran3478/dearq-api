@@ -8,9 +8,25 @@ const Comment = dbConfig.define("comments", {
         primaryKey: true,
         allowNull: false
     },
-    comment: {
+    content: {
         type: DataTypes.TEXT,
         allowNull: false
+    },
+    likesCount: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
+    created_date: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    edited: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    edited_date: {
+        type: DataTypes.DATE,
+        allowNull: true
     },
     blocked: {
         type: DataTypes.BOOLEAN,
@@ -18,6 +34,18 @@ const Comment = dbConfig.define("comments", {
     },
     block_reason: {
         type: DataTypes.STRING
+    },
+    blocked_date: {
+        type: DataTypes.DATE,
+        allowNull: true
+    },
+    deleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    deleted_date: {
+        type: DataTypes.DATE,
+        allowNull: true
     }
 })
 

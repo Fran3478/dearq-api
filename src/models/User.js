@@ -62,7 +62,7 @@ const User = dbConfig.define("users", {
     scopes: {
         removeSensitive: {
             attributes: {
-                exclude: ["password", "token", "verified", "createdAt", "updatedAt"]
+                exclude: ["password", "token"]
             }
         }
     }

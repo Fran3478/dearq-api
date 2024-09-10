@@ -38,9 +38,41 @@ const ERROR_HANDLERS = {
     PermissionError: (res, {message}) => {
         res.status(403).json({error: message})
     },
+    
+    UserNotFoundError: (res, {message}) => {
+        res.status(404).json({error: message})
+    },
+    
+    CategoryNotFoundError: (res, {message}) => {
+        res.status(404).json({error: message})
+    },
+
+    CommentError: (res, {message}) => {
+        res.status(500).json({error: message})
+    },
+
+    CommentNotFoundError: (res, {message}) => {
+        res.status(404).json({error: message})
+    },
+
+    CommentLikeDupError: (res, {message}) => {
+        res.status(409).json({error: message})
+    },
+
+    CommentLikeError: (res, {message}) => {
+        res.status(500).json({error: message})
+    },
+
+    CommentBlockError: (res, {message}) => {
+        res.status(409).json({error: message})
+    },
+
+    CommentDeleteError: (res, {message}) => {
+        res.status(409).json({error: message})
+    },
 
     defaultError: res => {
-        res.status(500).json({error: "Ha ocurrido un error interno en el servidor"}).end()
+        res.status(500).json({error: "Ha ocurrido un error inesperado en el servidor"}).end()
     }
 }
 

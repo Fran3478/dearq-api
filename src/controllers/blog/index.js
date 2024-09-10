@@ -6,6 +6,7 @@ import deletePost from "./deletePost.js"
 import forceDelete from "./forceDelete.js"
 import adminListPosts from "./adminListPosts.js"
 import adminGetPost from "./adminGetPost.js"
+import updatePost from "./updatePost.js"
 
 export {
     newPost,
@@ -15,5 +16,6 @@ export {
     deletePost,
     forceDelete,
     adminListPosts,
-    adminGetPost
+    adminGetPost,
+    updatePost
 }

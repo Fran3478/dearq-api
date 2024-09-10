@@ -1,3 +1,5 @@
+import { or } from "sequelize"
+
 export class LoginError extends Error {
     constructor (message, orig_error) {
         super(message)
@@ -134,10 +136,130 @@ export class PostDeleteError extends Error {
     }
 }
 
+export class PostUpdateError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "PostUpdateError"
+        this.orig_error = orig_error
+    }
+}
+
 export class CategoryError extends Error {
     constructor (message, orig_error) {
         super(message)
         this.name = "CategoryError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CategoryNotFoundError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CategoryNotFoundError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentCreationError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentCreationError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentSearchError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentSearchError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentNotFoundError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentNotFoundError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentUpdateError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentUpdateError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentDeleteError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentDeleteError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentLikeSearchError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentLikeSearchError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentLikeNotFoundError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentNotFoundError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentLikeDupError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentLikeDupError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentLikeCreationError extends Error {
+    constructor (message, orig_error) {
+        super(message)
+        this.name = "CommentLikeCreationError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentLikeCountError extends Error {
+    constructor(message, orig_error) {
+        super(message)
+        this.name = "CommentLikeCountError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentLikeError extends Error {
+    constructor(message, orig_error) {
+        super(message)
+        this.name = "CommentLikeError"
+        this.orig_error = orig_error
+    }
+}
+
+export class CommentBlockError extends Error {
+    constructor(message, orig_error) {
+        super(message)
+        this.name = "CommentBlockError"
         this.orig_error = orig_error
     }
 }

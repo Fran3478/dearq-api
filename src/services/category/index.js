@@ -1,15 +1,15 @@
-import createCategory from "./createCategory.js"
 import checkExist from "./checkExist.js"
-import getCategories from "./getCategories.js"
-import changeTitle from "./changeTitle.js"
-import getCategory from "./getCategory.js"
+import bulkCheckExist from "./bulkCheckExist.js"
+import createCategory from "./createCategory.js"
+import editCategory from "./editCategory.js"
 import deleteCategory from "./deleteCategory.js"
+import getCategories from "./getCategories.js"
 
 export {
-    createCategory,
     checkExist,
-    getCategories,
-    changeTitle,
-    getCategory,
-    deleteCategory
+    bulkCheckExist,
+    createCategory,
+    editCategory,
+    deleteCategory,
+    getCategories
 }

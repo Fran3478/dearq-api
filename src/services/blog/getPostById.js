@@ -1,27 +1,13 @@
 import { PostError, PostSearchError, PostNotFoundError } from "../../errors/index.js"
-import {PostView, PostContent} from "../../models/index.js"
-import {getPost} from "../post/index.js"
+import {findById} from "../../repositories/post/index.js"
 
 export default async (postId) => {
     try {
-        const options = {
-            include: [{
-                model: PostView,
-                as: "postView",
-                attributes: { exclude: ["postId", "createdAt", "updatedAt"] }
-            },
-            {
-                model: PostContent,
-                as: "postContent",
-                attributes: {exclude: ["postId", "createdAt", "updatedAt"]}
-            }],
-            where: {
-                published: true,
-                deleted: false
-            },
-            attributes: { exclude: ['userId', 'deleted', 'deleted_date', 'createdAt', 'updatedAt'] }
+        const searchParameters = {
+            where: {id: postId, deleted: false, published: true},
+            include: "all"
         }
-        const post = await getPost({id: postId, options})
+        const post = await findById({searchParameters})
         return post
     } catch (err) {
         if(err instanceof PostNotFoundError) throw err
