@@ -1,22 +1,18 @@
 import { PostDeleteError, PostError, PostNotFoundError } from "../../errors/index.js"
 import {bulkUpdate, findById} from "../../repositories/post/index.js"
 
-export default async ({id, deleter, action}) => {
+export default async ({id, deleter}) => {
     try {
-        const deletion = action === "delete"
         const searchParameters = {
             where: {id}
         }
         const post = await findById({searchParameters})
-        if(deletion && post.deleted) throw new PostDeleteError("La publicación que se intenta eliminar, ya se encuentra eliminada actualmente")
-        if(!deletion && !post.deleted) throw new PostDeleteError("La publicación que se intenta restaurar, ya se encuentra restaurada actualmente")
+        if(post.deleted) throw new PostDeleteError("La publicación que se intenta eliminar, ya se encuentra eliminada actualmente")
         const updates = {
-            deleted: deletion
-        }
-        if(deletion) {
-            updates.published = false
-            updates.deleted_date = new Date()
-            updates.deleterId = deleter
+            deleted: true,
+            published: false,
+            deleted_date: new Date(),
+            deleterId: deleter
         }
         await bulkUpdate({post, updates})
     } catch (err) {
