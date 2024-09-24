@@ -7,7 +7,7 @@ export default async ({page, category = ""}) => {
         const searchParameters = {
             pageSize,
             page,
-            published: false
+            published: true
         }
  
         if(category) {
