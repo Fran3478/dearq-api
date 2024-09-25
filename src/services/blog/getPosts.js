@@ -1,16 +1,16 @@
 import { PostSearchError } from "../../errors/index.js"
 import {findAll} from "../../repositories/post/index.js"
 
-export default async ({page, category = ""}) => {
+export default async ({page, category = "all"}) => {
     try {
         const pageSize = 5
         const searchParameters = {
             pageSize,
             page,
-            published: false
+            published: true
         }
  
-        if(category) {
+        if(category !== "all") {
             searchParameters.category = category
         }
         
