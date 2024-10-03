@@ -1,5 +1,6 @@
+import { Op } from "sequelize"
 import { PostSearchError } from "../../errors/index.js"
-import { Category, Post, PostView } from "../../models/index.js"
+import { Category, Post, PostView, sequelize } from "../../models/index.js"
 
 export default async ({searchParameters}) => {
     try {
@@ -22,15 +23,25 @@ export default async ({searchParameters}) => {
                 }
             ],
             attributes: { exclude: ['userId', 'deleted', 'deleted_date', 'createdAt', 'updatedAt'] },
-            order: [["published_date", "DESC"]],
+            order: [["created_date", "DESC"]],
             distinct: true
         }
 
+        if(searchParameters.title) {
+            options.include[0].where = {title: {[Op.like]: "%" + searchParameters.title + "%"}}
+        }
         if(searchParameters.published !== undefined) {
             options.where = {...options.where, published: searchParameters.published}
         }
         if(searchParameters.category) {
-            options.include[1].where = { id: searchParameters.category }
+            options.where = {
+                ...options.where,
+                id: {
+                  [Op.in]: sequelize.literal(
+                    `(SELECT "postId" FROM "post_category" WHERE "categoryId" = '${searchParameters.category}')`
+                  ),
+                },
+              };
         }
         if(searchParameters.offset) {
             options.offset = searchParameters.offset
@@ -45,6 +56,7 @@ export default async ({searchParameters}) => {
             rows
         }
     } catch (err) {
+        console.log(err)
         throw new PostSearchError("Error al recuperar las publicaciones", err)
     }
 }

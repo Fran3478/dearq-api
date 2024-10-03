@@ -1,7 +1,7 @@
 import { PostSearchError } from "../../errors/index.js"
 import {findAll} from "../../repositories/post/index.js"
 
-export default async ({page, filter = "all"}) => {
+export default async ({page, status = "all", category = "all", title = ""}) => {
     try {
         const pageSize = 10
         const searchParameters = {
@@ -9,8 +9,14 @@ export default async ({page, filter = "all"}) => {
             page
         }
 
-        if(filter && filter !== "all") {
-            searchParameters.published = filter
+        if(status !== "all" && ["published", "unpublished"].includes(status)) {
+            searchParameters.published = status === "published"
+        }
+        if(category !== "all") {
+            searchParameters.category = category
+        }
+        if(title) {
+            searchParameters.title = title
         }
 
         let results = await findAll({searchParameters})
